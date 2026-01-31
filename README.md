@@ -26,6 +26,7 @@
 5.การชำระเงิน UI สำหรับเลือกวิธีจ่าย (QR Code, บัตรเครดิต) ต้องมี secure payment form พร้อม loading state และ success/error feedback  
 6.ประวัติการใช้งาน หน้า history ที่แสดงการจอง, การชำระเงิน แบบ list พร้อม filter ตามวันที่ เรียง format ที่อ่านง่าย  
 7.Accessibility & i18n ทั้ง UI ต้องรองรับ ภาษาไทย/อังกฤษ , เข้าถึงได้สำหรับผู้พิการ มี screen reader support  
+8.มีปุ่มแจ้งปัญหา (Report Issue) ที่เข้าถึงได้ง่าย (เช่น จากหน้า Booking Detail หรือหน้า Profile) รองรับการเลือกหัวข้อปัญหา (เช่น รถจอดขวาง, อุปกรณ์เสีย) และสามารถ แนบรูปถ่าย หรือพิมพ์รายละเอียดเพิ่มเติมได้  
 
 ## Back-End Requirements
 1.Authentication & AuthorizationAPI จัดการ user registration, login ด้วย email/phone, session/token management, และ role-based access (ผู้ใช้ vs เจ้าของห้าง)  
@@ -37,3 +38,4 @@
 7.การจัดการ parking สำหรับเจ้าของห้าง Admin API สำหรับ CRUD ที่จอดรถ, กำหนด rate, จัดการ zone พิเศษ (เช่น คนพิการ)  
 8.ประวัติ & Reporting API ดึงข้อมูล history ผู้ใช้ พร้อม filter, รวมถึง analytics สำหรับเจ้าของห้าง  
 9.Security & Compliance ต้อง encrypt ข้อมูลผู้ใช้และ payment data (TLS, encryption at rest), ปฏิบัติตาม PDPA, พร้อม rate limiting  
+10.API สำหรับรับ Ticket แจ้งปัญหา, บันทึกรูปภาพ (Upload Service), และแจ้งเตือนไปยัง Admin/Security Guard ทันที (Notification System)  
