@@ -18,6 +18,22 @@
 5: แอปพลิเคชันต้องมี UI/UX ที่ใช้งานง่าย เข้าใจง่าย รองรับทั้งภาษาไทยและอังกฤษ และเข้าถึงได้สำหรับผู้พิการ  
 
 #TOR Requirement
-##Front-end design
-1. User interface ของเว็ปไซต์ที่ทันสมัยดู minimal เข้าใจง่าย เป็น responsive design
-2. มีฟังก์ชันการ login เเละป้องกันการลืมรหัสผ่าน
+## Front-End Requirements
+1.การจัดการบัญชีผู้ใช้ หน้า Login/Register ต้องรองรับการเข้าสู่ระบบด้วยอีเมลหรือเบอร์โทรศัพท์ มี form ที่ชัดเจน และรับบ้านแบบ single-sign-on เเละ forgot password
+2.หน้าค้นหาห้างสรรพสินค้าUI ต้องมี search bar ที่ค้นหาได้ตามชื่อ สถานที่ หรือ geolocation ใกล้เคียง พร้อม filter เเละ sort option มี map view หรือ list view ให้ผู้ใช้เลือก  
+3.การแสดงข้อมูลที่จอดรถ จะต้องมีข้อมูล real-time ของแต่ละห้างแยกตามชั้นและโซน ใช้ visual คอยนำทางเช่น สีเพื่อบอกว่า วันที่ เลยต้องมี progress bar หรือ countdown ของการจอง  
+4.หน้าจอง/ยกเลิกจอง ต้องมี date/time  ที่ user-friendly รับ input ระยะเวลา แสดง preview ค่าธรรมเนียม ก่อนยืนยัน พร้อม confirmation flow ที่ชัดเจน  
+5.การชำระเงิน UI สำหรับเลือกวิธีจ่าย (QR Code, บัตรเครดิต) ต้องมี secure payment form พร้อม loading state และ success/error feedback  
+6.ประวัติการใช้งาน หน้า history ที่แสดงการจอง, การชำระเงิน แบบ list พร้อม filter ตามวันที่ เรียง format ที่อ่านง่าย  
+7.Accessibility & i18n ทั้ง UI ต้องรองรับ ภาษาไทย/อังกฤษ , เข้าถึงได้สำหรับผู้พิการ มี screen reader support  
+
+## Back-End Requirements
+1.Authentication & AuthorizationAPI จัดการ user registration, login ด้วย email/phone, session/token management, และ role-based access (ผู้ใช้ vs เจ้าของห้าง)  
+2.ระบบค้นหาห้างSearch API รับ query ตามชื่อ, สถานที่ หรือ coordinates (geolocation) พร้อม pagination  
+3.Real-Time Parking Status ต้อง maintain ข้อมูลที่จอดว่า/เต็มแบบ real-time ความล่าช้าไม่เกิน 2 วินาที  
+4.Booking & Cancellation LogicAPI จัดการ CRUD ของการจอง ต้องมี concurrency control เพื่อป้องกันการจอง slot เดียวกันพร้อมกัน พร้อม logic หมดอายุเมื่อเวลาจบ  
+5.การคำนวณค่าธรรมเนียม Business logic คำนวณค่าจอดตาม rate ของแต่ละห้าง (เช่น ชั่วโมงแรก 20 บาท, ต่อไป 10 บาท)
+6.Payment Processing Integration กับ payment gateway รับ QR Code หรือ card จัดการ transaction, refund หากยกเลิก พร้อม logging ทุก transaction  
+7.การจัดการ parking สำหรับเจ้าของห้าง Admin API สำหรับ CRUD ที่จอดรถ, กำหนด rate, จัดการ zone พิเศษ (เช่น คนพิการ)  
+8.ประวัติ & Reporting API ดึงข้อมูล history ผู้ใช้ พร้อม filter, รวมถึง analytics สำหรับเจ้าของห้าง  
+9.Security & Compliance ต้อง encrypt ข้อมูลผู้ใช้และ payment data (TLS, encryption at rest), ปฏิบัติตาม PDPA, พร้อม rate limiting  
