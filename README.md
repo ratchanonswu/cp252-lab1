@@ -39,3 +39,6 @@
 8.ประวัติ & Reporting API ดึงข้อมูล history ผู้ใช้ พร้อม filter, รวมถึง analytics สำหรับเจ้าของห้าง  
 9.Security & Compliance ต้อง encrypt ข้อมูลผู้ใช้และ payment data (TLS, encryption at rest), ปฏิบัติตาม PDPA, พร้อม rate limiting  
 10.API สำหรับรับ Ticket แจ้งปัญหา, บันทึกรูปภาพ (Upload Service), และแจ้งเตือนไปยัง Admin/Security Guard ทันที (Notification System)  
+
+
+## Edit for new lab
